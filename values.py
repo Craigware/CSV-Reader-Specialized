@@ -125,6 +125,8 @@ def CountRating(options, rating):
   i = len(options)
   for ranking in rankings:
     message = ""
+    if i < 10:
+      message += " "
     if i >= len(options) - 2:
       message += "\033[91m"
     elif i <= 3:
@@ -174,8 +176,8 @@ def MostControversial(options):
     for value in ratings:
       total += value
 
-    positive = ratings[0] + (ratings[1] * .5)
-    negative = ratings[4] + (ratings[3] * .5)
+    positive = ratings[0] + (ratings[1])
+    negative = ratings[4] + (ratings[3])
     percentagePositive = round(positive/total * 100, 2)
     percentageNegative = round(negative/total * 100, 2)
     resp.append((creature[0], [abs(positive - negative), percentagePositive, percentageNegative]))
